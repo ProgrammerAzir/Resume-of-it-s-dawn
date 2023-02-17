@@ -2,6 +2,11 @@
   "name": "resume_of_it_dawn",
   "version": "1.0.0",
   "private": true,
+  "author": {
+    "name": "张宇晗",
+    "email": "641408809@qq.com",
+    "url": "https://github.com/ProgrammerAzir/Resume-of-it-s-dawn"
+  },
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
