@@ -3,7 +3,7 @@
 </script>
 <template>
     <div class="box1">
-
+12312
     </div>
 </template>
 <style lang="less">

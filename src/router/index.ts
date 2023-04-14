@@ -9,6 +9,18 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     },
+    {
+      path:'/echats',
+      name:'echats',
+      component:()=>import('@/views/echats/index.vue'),
+      children:[
+        {
+          path: '/echats/weather',
+          name:'weather',
+          component: ()=>import('@/views/echats/views/weather/index.vue')
+        },
+      ]
+    }
   ]
 })
 

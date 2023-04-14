@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeMount, ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
+import AppAside from "./AppAside.vue";
 const loading = ref(true);
 const progress = ref(0);
 const progressFormat = computed(() => {
@@ -17,20 +18,40 @@ onBeforeMount(() => {
     progress.value = res > 100 ? 100 : res;
     if (res >= 100) {
       clearInterval(time);
-      // loading.value=false
+      loading.value=false
     }
   }, 10);
 });
+
+function progressTasks(...tasks: any[]) {
+  return {
+    stasrt() {},
+    pause() {},
+  };
+}
+let tasks = undefined;
+function initTasks() {
+  tasks = progressTasks([
+    setTimeout(() => console.log(2), 1000),
+    setTimeout(() => console.log(3), 1000),
+    setTimeout(() => console.log(4), 1000),
+  ]);
+}
+function open() {}
+function pause() {}
 </script>
 
 <template>
   <div :class="['box', loading ? '' : 'out']">
+    <botton @click="open">开始</botton>
+    <botton @click="pause">暂停</botton>
+
     <div class="sun-box">
       <div class="sun"></div>
     </div>
     <!-- {{ progressFormat }} -->
   </div>
-  <RouterView v-show="!loading" />
+  <AppAside v-show="!loading"></AppAside>
 </template>
 
 <style scoped lang="less">
@@ -82,7 +103,6 @@ onBeforeMount(() => {
     transform: rotate(-360deg) scaleY(2) rotate(30deg) scale(1);
   }
 }
-
 
 @keyframes out {
   from {
